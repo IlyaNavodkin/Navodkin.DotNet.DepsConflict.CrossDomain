@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>12</LangVersion>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="RevitTask" Version="3.0.0" />
+		<PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2022" IncludeAssets="build; compile" PrivateAssets="All" />
+	</ItemGroup>
+
+
+</Project>

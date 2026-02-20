@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>12</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Revit_All_Main_Versions_API_x64" Version="2022" IncludeAssets="build; compile" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyApp.Core.Contracts\MyApp.Core.Contracts.csproj" />
+    <ProjectReference Include="..\MyApp.Modules.TestModule.Contracts\MyApp.Modules.TestModule.Contracts.csproj" />
+    <ProjectReference Include="..\MyApp.Core.Impl\MyApp.Core.Impl.csproj" ReferenceOutputAssembly="false" PrivateAssets="All" />
+    <ProjectReference Include="..\MyApp.Modules.TestModule.Impl\MyApp.Modules.TestModule.Impl.csproj" ReferenceOutputAssembly="false" PrivateAssets="All" />
+  </ItemGroup>
+
+  <Target Name="CopyCoreToOutput" AfterTargets="Build">
+    <PropertyGroup>
+      <_CoreSourceDir>$(MSBuildThisFileDirectory)..\MyApp.Core.Impl\bin\$(Configuration)\$(TargetFramework)\</_CoreSourceDir>
+      <_ImplSourceDir>$(MSBuildThisFileDirectory)..\MyApp.Modules.TestModule.Impl\bin\$(Configuration)\$(TargetFramework)\</_ImplSourceDir>
+      <_CoreTargetDir>$(OutputPath)Core\</_CoreTargetDir>
+    </PropertyGroup>
+    <ItemGroup>
+      <_CoreFiles Include="$(_CoreSourceDir)**\*" />
+      <_ImplFiles Include="$(_ImplSourceDir)**\*" />
+    </ItemGroup>
+    <MakeDir Directories="$(_CoreTargetDir)" Condition="!Exists('$(_CoreTargetDir)')" />
+    <Copy SourceFiles="@(_CoreFiles)" DestinationFolder="$(_CoreTargetDir)%(RecursiveDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(_ImplFiles)" DestinationFolder="$(_CoreTargetDir)%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>

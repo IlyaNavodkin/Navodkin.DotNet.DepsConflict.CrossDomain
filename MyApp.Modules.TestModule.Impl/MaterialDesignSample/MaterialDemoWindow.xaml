@@ -1,0 +1,61 @@
+<Window x:Class="MyApp.Modules.TestModule.Impl.MaterialDesignSample.MaterialDemoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Material Design Demo" Height="480" Width="460"
+        WindowStartupLocation="CenterScreen" Topmost="True">
+  <Window.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Secondary/MaterialDesignColor.Lime.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Window.Resources>
+  <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <Grid Margin="24">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+        <RowDefinition Height="Auto"/>
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0" Text="Material Design (MaterialDesignThemes)" FontSize="16" Margin="0,0,0,16"/>
+      <TextBox Grid.Row="1" materialDesign:HintAssist.Hint="Текстовое поле" Style="{StaticResource MaterialDesignOutlinedTextBox}"
+               Margin="0,0,0,8" x:Name="MaterialInput"/>
+      <TextBox Grid.Row="2" materialDesign:HintAssist.Hint="Ещё поле" Style="{StaticResource MaterialDesignOutlinedTextBox}"
+               Margin="0,0,0,8" x:Name="MaterialInput2"/>
+      <ComboBox Grid.Row="3" materialDesign:HintAssist.Hint="Выберите" Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                Margin="0,0,0,8" SelectedIndex="0">
+        <ComboBoxItem Content="Вариант 1"/>
+        <ComboBoxItem Content="Вариант 2"/>
+        <ComboBoxItem Content="Вариант 3"/>
+      </ComboBox>
+      <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,0,0,8">
+        <CheckBox Content="Чекбокс" IsChecked="True" Style="{StaticResource MaterialDesignCheckBox}" Margin="0,0,16,0"/>
+        <CheckBox Content="Ещё один" Style="{StaticResource MaterialDesignCheckBox}"/>
+      </StackPanel>
+      <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="0,0,0,8">
+        <RadioButton Content="Радио 1" GroupName="g1" IsChecked="True" Style="{StaticResource MaterialDesignRadioButton}" Margin="0,0,16,0"/>
+        <RadioButton Content="Радио 2" GroupName="g1" Style="{StaticResource MaterialDesignRadioButton}"/>
+      </StackPanel>
+      <Slider Grid.Row="6" Minimum="0" Maximum="100" Value="50" Margin="0,0,0,8" Style="{x:Null}"/>
+      <ProgressBar Grid.Row="7" Value="65" Minimum="0" Maximum="100" Height="8" Margin="0,0,0,16" Style="{x:Null}"/>
+      <StackPanel Grid.Row="8" Orientation="Horizontal" VerticalAlignment="Top">
+        <Button Content="Raised" Style="{StaticResource MaterialDesignRaisedButton}" Margin="0,0,8,0"/>
+        <Button Content="Flat" Style="{StaticResource MaterialDesignFlatButton}" Margin="0,0,8,0"/>
+        <ToggleButton Content="Toggle" Margin="0,0,8,0"/>
+      </StackPanel>
+      <Button Grid.Row="9" Content="Закрыть" Style="{StaticResource MaterialDesignFlatButton}"
+              Click="CloseButton_Click" HorizontalAlignment="Right" Margin="0,16,0,0"/>
+    </Grid>
+  </ScrollViewer>
+</Window>
